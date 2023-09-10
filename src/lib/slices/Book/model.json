@@ -1,0 +1,57 @@
+{
+  "id": "book",
+  "type": "SharedSlice",
+  "name": "Book",
+  "description": "Book",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "cover": {
+          "type": "Image",
+          "config": {
+            "label": "Cover",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "year": {
+          "type": "Number",
+          "config": {
+            "label": "Year",
+            "placeholder": ""
+          }
+        },
+        "references": {
+          "type": "Text",
+          "config": {
+            "label": "References",
+            "placeholder": ""
+          }
+        },
+        "url": {
+          "type": "Link",
+          "config": {
+            "label": "URL",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

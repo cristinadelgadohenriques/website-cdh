@@ -1,0 +1,43 @@
+import * as prismic from '@prismicio/client';
+
+const config = {
+	'repositoryName': 'cdh-website',
+	'adapter': '@slicemachine/adapter-sveltekit',
+	'libraries': ['./src/lib/slices'],
+	'localSliceSimulatorURL': 'http://localhost:5173/slice-simulator',
+};
+
+/**
+ * The project's Prismic repository name.
+ */
+export const repositoryName = config.repositoryName;
+
+/**
+ * A list of Route Resolver objects that define how a document's `url` field is resolved.
+ *
+ * {@link https://prismic.io/docs/route-resolver#route-resolver}
+ *
+ * @type {prismic.ClientConfig["routes"]}
+ */
+// TODO: Update the routes array to match your project's route structure.
+const routes = [
+	{
+		type: 'home',
+		path: '/home',
+	},
+];
+
+/**
+ * Creates a Prismic client for the project's repository. The client is used to
+ * query content from the Prismic API.
+ *
+ * @param {prismic.ClientConfig} config - Configuration for the Prismic client.
+ */
+export const createClient = (config = {}) => {
+	const client = prismic.createClient(repositoryName, {
+		routes,
+		...config,
+	});
+
+	return client;
+};

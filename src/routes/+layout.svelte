@@ -1,0 +1,46 @@
+<script>
+  import '../app.css';
+  import { page } from '$app/stores';
+	import { PrismicImage, PrismicLink } from '@prismicio/svelte';
+  import { createClient } from '$lib/prismicio';
+  $: currentTab = $page.route.id?.split('/')[1] || 'home';
+
+  let header, footer;
+	const client = createClient();
+	client.getSingle('header').then(data => header = data.data);
+	client.getSingle('footer').then(data => footer = data.data);
+
+  const tabs = ['home', 'research', 'teaching', 'gallery'];
+</script>
+
+{#if header && footer}
+  <div class="min-h-screen flex flex-col items-center">
+    <PrismicImage class="w-full h-48 object-cover" height={192} field={header.banner} />
+    <PrismicImage class="rounded-full -translate-y-[70%] border-solid border-8 border-white h-48 -mb-28" height={192} field={header.photo} />
+    <h1 class="font-serif font-bold text-4xl text-[#333]">{header.name}</h1>
+    <div class="my-12 grow w-[1000px] flex flex-col items-center">
+      <div class="w-full relative flex border-b-[3px] border-[#F4F4F4] font-bold uppercase text-[#A5A5A5]">
+        {#each tabs as tab}
+          <a class="py-2 transition-all text-center {currentTab == tab ? 'text-[#333]' : ''}" style:width="{100 / tabs.length}%" href={tab.replace('home', '/')}>{tab}</a>
+        {/each}
+        <div class="absolute h-[3px] bg-[#333] -bottom-[3px] transition-all" style:width="{100 / tabs.length}%" style:left="{Math.max(tabs.indexOf(currentTab) * 100 / tabs.length, 0)}%"></div>
+      </div>
+      <div class="w-full mt-10">
+        <slot />
+      </div>
+    </div>
+    <div class="w-full h-48 bg-[#252525] flex justify-center items-center gap-24">
+      <div class="flex flex-col justify-center gap-5 w-[280px] opacity-75">
+        {#each footer.logos as logo}
+          <PrismicLink field={logo.url}>
+            <PrismicImage class={logo.invert ? 'invert' : ''} field={logo.logo} />
+          </PrismicLink>
+        {/each}
+      </div>
+      <div class="text-[#909090] leading-snug text-sm">
+        <h2 class="text-[#BCBCBC] font-bold mb-1">Contact</h2>
+        {@html footer.contact.replace(/\n/g, '<br>')}
+      </div>
+    </div>
+  </div>
+{/if}
