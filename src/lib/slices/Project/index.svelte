@@ -4,7 +4,7 @@
   export let slice;
 </script>
 
-<div class="flex gap-11 items-center w-full my-10">
+<div class="flex flex-col lg:flex-row gap-5 lg:gap-11 lg:items-center w-full my-10">
   <PrismicLink field={slice.primary.url}>
     <PrismicImage class="min-w-[170px] max-w-[170px]" width={170} field={slice.primary.logo} />
   </PrismicLink>

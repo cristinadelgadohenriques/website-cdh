@@ -13,7 +13,7 @@
   <Tab>
     {#each teaching.section as { title, content }}
       <Section {title}>
-        <div class="ml-10 text-[#333]">
+        <div class="ml-4 lg:ml-10 text-[#333] break-words">
           <PrismicRichText field={content} />
         </div>
       </Section>
