@@ -1,7 +1,7 @@
 {
   "id": "book",
   "type": "SharedSlice",
-  "name": "Book",
+  "name": "Publication",
   "description": "Book",
   "variations": [
     {
@@ -34,10 +34,24 @@
             "placeholder": ""
           }
         },
-        "references": {
+        "isbn10": {
           "type": "Text",
           "config": {
-            "label": "References",
+            "label": "ISBN10",
+            "placeholder": ""
+          }
+        },
+        "isbn13": {
+          "type": "Text",
+          "config": {
+            "label": "ISBN13",
+            "placeholder": ""
+          }
+        },
+        "doi": {
+          "type": "Text",
+          "config": {
+            "label": "DOI",
             "placeholder": ""
           }
         },

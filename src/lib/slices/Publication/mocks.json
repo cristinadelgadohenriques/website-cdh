@@ -36,17 +36,27 @@
 				"value": "0",
 				"type": "Number"
 			},
-			"references": {
-				"__TYPE__": "FieldContent",
-				"value": "twenty",
-				"type": "Text"
-			},
 			"url": {
 				"__TYPE__": "LinkContent",
 				"value": {
 					"__TYPE__": "ExternalLink",
 					"url": "http://google.com"
 				}
+			},
+			"isbn10": {
+				"__TYPE__": "FieldContent",
+				"value": "earlier",
+				"type": "Text"
+			},
+			"isbn13": {
+				"__TYPE__": "FieldContent",
+				"value": "swung",
+				"type": "Text"
+			},
+			"doi": {
+				"__TYPE__": "FieldContent",
+				"value": "total",
+				"type": "Text"
 			}
 		},
 		"items": []

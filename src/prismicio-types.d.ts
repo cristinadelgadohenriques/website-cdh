@@ -188,8 +188,7 @@ interface GalleryDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<GalleryDocumentDataSlicesSlice>
-  /**
+  slices: prismic.SliceZone<GalleryDocumentDataSlicesSlice> /**
    * Meta Description field in *Gallery*
    *
    * - **Field Type**: Text
@@ -330,8 +329,7 @@ interface HomeDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<HomeDocumentDataSlicesSlice>
-  /**
+  slices: prismic.SliceZone<HomeDocumentDataSlicesSlice> /**
    * Meta Description field in *Home*
    *
    * - **Field Type**: Text
@@ -462,8 +460,7 @@ interface TeachingDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<TeachingDocumentDataSlicesSlice>
-  /**
+  slices: prismic.SliceZone<TeachingDocumentDataSlicesSlice> /**
    * Meta Description field in *Teaching*
    *
    * - **Field Type**: Text
@@ -524,11 +521,11 @@ export type AllDocumentTypes =
   | TeachingDocument;
 
 /**
- * Primary content in *Book → Primary*
+ * Primary content in *Publication → Primary*
  */
 export interface BookSliceDefaultPrimary {
   /**
-   * Cover field in *Book → Primary*
+   * Cover field in *Publication → Primary*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -538,7 +535,7 @@ export interface BookSliceDefaultPrimary {
   cover: prismic.ImageField<never>;
 
   /**
-   * Title field in *Book → Primary*
+   * Title field in *Publication → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -548,7 +545,7 @@ export interface BookSliceDefaultPrimary {
   title: prismic.KeyTextField;
 
   /**
-   * Year field in *Book → Primary*
+   * Year field in *Publication → Primary*
    *
    * - **Field Type**: Number
    * - **Placeholder**: *None*
@@ -558,17 +555,37 @@ export interface BookSliceDefaultPrimary {
   year: prismic.NumberField;
 
   /**
-   * References field in *Book → Primary*
+   * ISBN10 field in *Publication → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: book.primary.references
+   * - **API ID Path**: book.primary.isbn10
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  references: prismic.KeyTextField;
+  isbn10: prismic.KeyTextField;
 
   /**
-   * URL field in *Book → Primary*
+   * ISBN13 field in *Publication → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: book.primary.isbn13
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  isbn13: prismic.KeyTextField;
+
+  /**
+   * DOI field in *Publication → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: book.primary.doi
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  doi: prismic.KeyTextField;
+
+  /**
+   * URL field in *Publication → Primary*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
@@ -579,7 +596,7 @@ export interface BookSliceDefaultPrimary {
 }
 
 /**
- * Default variation for Book Slice
+ * Default variation for Publication Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
@@ -592,12 +609,12 @@ export type BookSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
- * Slice variation for *Book*
+ * Slice variation for *Publication*
  */
 type BookSliceVariation = BookSliceDefault;
 
 /**
- * Book Shared Slice
+ * Publication Shared Slice
  *
  * - **API ID**: `book`
  * - **Description**: Book
@@ -684,7 +701,7 @@ declare module "@prismicio/client" {
   interface CreateClient {
     (
       repositoryNameOrEndpoint: string,
-      options?: prismic.ClientConfig
+      options?: prismic.ClientConfig,
     ): prismic.Client<AllDocumentTypes>;
   }
 
