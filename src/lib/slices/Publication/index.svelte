@@ -15,7 +15,7 @@
       </PrismicLink>
     {/if}
   </div>
-  <div class="bg-[#F4F4F4] w-1"></div>
+  <div class="bg-[#F4F4F4] min-w-[3px]"></div>
   <div class="flex flex-col gap-2 mt-2 mb-10 text-sm lg:text-md">
     <span class="font-bold text-black">{slice.primary.title}</span>
     {slice.primary.isbn13 ? 'ISBN13: ' + slice.primary.isbn13 : ''}
@@ -23,9 +23,13 @@
     {slice.primary.isbn10 ? 'ISBN10: ' + slice.primary.isbn10 : ''}
     {#if slice.primary.doi}
       <div>
-        DOI: <a class="underline break-all" href={`https://doi.org/${slice.primary.doi}`}>{slice.primary.doi}</a>
+        DOI: <a target="_blank" rel="noopener noreferrer" class="underline break-all" href={`https://doi.org/${slice.primary.doi}`}>{slice.primary.doi}</a>
       </div>
     {/if}
-    <PrismicLink class="underline break-all" field={slice.primary.url}>{slice.primary.url.url}</PrismicLink>
+    {#if slice.primary.url.url}
+      <div>
+        <PrismicLink class="underline break-all" field={slice.primary.url}>{slice.primary.url.url}</PrismicLink>
+      </div>
+    {/if}
   </div>
 </div>

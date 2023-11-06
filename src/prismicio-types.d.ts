@@ -68,6 +68,40 @@ interface BooksDocumentData {
 export type BooksDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<BooksDocumentData>, "books", Lang>;
 
+type DatabasesDocumentDataSlicesSlice = BookSlice;
+
+/**
+ * Content for Databases documents
+ */
+interface DatabasesDocumentData {
+  /**
+   * Slice Zone field in *Databases*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: databases.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<DatabasesDocumentDataSlicesSlice>;
+}
+
+/**
+ * Databases document from Prismic
+ *
+ * - **API ID**: `databases`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type DatabasesDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<DatabasesDocumentData>,
+    "databases",
+    Lang
+  >;
+
 /**
  * Item in *Footer → Logos*
  */
@@ -375,6 +409,40 @@ interface HomeDocumentData {
 export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
+type PapersDocumentDataSlicesSlice = BookSlice;
+
+/**
+ * Content for Papers documents
+ */
+interface PapersDocumentData {
+  /**
+   * Slice Zone field in *Papers*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: papers.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<PapersDocumentDataSlicesSlice>;
+}
+
+/**
+ * Papers document from Prismic
+ *
+ * - **API ID**: `papers`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PapersDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<PapersDocumentData>,
+    "papers",
+    Lang
+  >;
+
 type ProjectsDocumentDataSlicesSlice = ProjectSlice;
 
 /**
@@ -513,10 +581,12 @@ export type TeachingDocument<Lang extends string = string> =
 export type AllDocumentTypes =
   | BookChaptersDocument
   | BooksDocument
+  | DatabasesDocument
   | FooterDocument
   | GalleryDocument
   | HeaderDocument
   | HomeDocument
+  | PapersDocument
   | ProjectsDocument
   | TeachingDocument;
 
@@ -713,6 +783,9 @@ declare module "@prismicio/client" {
       BooksDocument,
       BooksDocumentData,
       BooksDocumentDataSlicesSlice,
+      DatabasesDocument,
+      DatabasesDocumentData,
+      DatabasesDocumentDataSlicesSlice,
       FooterDocument,
       FooterDocumentData,
       FooterDocumentDataLogosItem,
@@ -725,6 +798,9 @@ declare module "@prismicio/client" {
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
+      PapersDocument,
+      PapersDocumentData,
+      PapersDocumentDataSlicesSlice,
       ProjectsDocument,
       ProjectsDocumentData,
       ProjectsDocumentDataSlicesSlice,
