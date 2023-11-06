@@ -23,7 +23,7 @@
     <div class="my-8 lg:my-12 grow w-[90%] lg:w-[1000px] flex flex-col items-center">
       <div class="w-full relative flex border-b-[3px] border-[#F4F4F4] font-bold uppercase text-[#A5A5A5]">
         {#each tabs as tab}
-          <a class="py-2 transition-all text-sm text-center {currentTab == tab ? 'text-[#333]' : ''}" style:width="{100 / tabs.length}%" href={tab.replace('home', '/')}>{tab}</a>
+          <a class="py-2 transition-all text-sm lg:text-base text-center {currentTab == tab ? 'text-[#333]' : ''}" style:width="{100 / tabs.length}%" href={tab.replace('home', '/')}>{tab}</a>
         {/each}
         <div class="absolute h-[3px] bg-[#333] -bottom-[3px] transition-all" style:width="{100 / tabs.length}%" style:left="{Math.max(tabs.indexOf(currentTab) * 100 / tabs.length, 0)}%"></div>
       </div>
