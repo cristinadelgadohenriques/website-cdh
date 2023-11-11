@@ -1,5 +1,5 @@
 <script>
-  import { PrismicImage, PrismicLink } from '@prismicio/svelte';
+  import { PrismicImage, PrismicLink, PrismicRichText } from '@prismicio/svelte';
   /** @type {import("@prismicio/client").Content.BookSlice} */
   export let slice, innerWidth;
 </script>
@@ -17,7 +17,7 @@
   </div>
   <div class="bg-[#F4F4F4] min-w-[3px]"></div>
   <div class="flex flex-col gap-2 mt-2 mb-10 text-sm lg:text-md">
-    <span class="font-bold text-black">{slice.primary.title}</span>
+    <PrismicRichText field={slice.primary.title} />
     {slice.primary.isbn13 ? 'ISBN13: ' + slice.primary.isbn13 : ''}
     {slice.primary.isbn13 && slice.primary.isbn10 ? ' | ' : ''}
     {slice.primary.isbn10 ? 'ISBN10: ' + slice.primary.isbn10 : ''}
